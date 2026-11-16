@@ -1,0 +1,6 @@
+:host { display: grid; place-items: center; min-height: 100vh; padding: 16px; box-sizing: border-box; }
+.card { width: 100%; max-width: 420px; }
+form { display: flex; flex-direction: column; gap: 8px; padding-top: 16px; }
+.roles { align-self: center; margin-bottom: 8px; }
+.error { color: var(--mat-sys-error); margin: 0; }
+.demo { margin-top: 24px; display: flex; flex-direction: column; gap: 8px; button { margin-right: 8px; } }

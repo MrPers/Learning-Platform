@@ -1,0 +1,54 @@
+<mat-card class="card" appearance="outlined">
+  @if (busy()) { <mat-progress-bar mode="indeterminate" /> }
+  <mat-card-header>
+    <mat-card-title>{{ twoFactorEmail() ? 'Verification code' : 'Log in' }}</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    @if (!twoFactorEmail()) {
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <mat-button-toggle-group formControlName="role" class="roles" aria-label="Role">
+          <mat-button-toggle value="Student">Student</mat-button-toggle>
+          <mat-button-toggle value="Teacher">Teacher</mat-button-toggle>
+          <mat-button-toggle value="Admin">Admin</mat-button-toggle>
+        </mat-button-toggle-group>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" formControlName="email" autocomplete="username" />
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password" autocomplete="current-password" />
+        </mat-form-field>
+
+        @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+        <button mat-flat-button type="submit" [disabled]="form.invalid || busy()">Log in</button>
+        <a routerLink="/forgot-password">Forgot password?</a>
+        <a routerLink="/register">No account? Sign up</a>
+      </form>
+
+      <div class="demo">
+        <small>Demo accounts (Development) - click to fill in email, password and role. Password: <code>{{ demoPassword }}</code></small>
+        <div>
+          @for (a of demo; track a.email) {
+            <button mat-stroked-button type="button" (click)="fillDemo(a)">{{ a.label }}</button>
+          }
+        </div>
+      </div>
+    } @else {
+      <p>We sent a code by {{ method() === 'Email' ? 'email' : 'SMS' }} for {{ twoFactorEmail() }}.</p>
+      <form [formGroup]="codeForm" (ngSubmit)="verify()">
+        <mat-form-field appearance="outline">
+          <mat-label>Code</mat-label>
+          <input matInput formControlName="code" inputmode="numeric" autocomplete="one-time-code" />
+        </mat-form-field>
+        @if (error()) { <p class="error" role="alert">{{ error() }}</p> }
+        <button mat-flat-button type="submit" [disabled]="codeForm.invalid || busy()">Verify</button>
+        <button mat-button type="button" (click)="switchMethod(method() === 'Email' ? 'SMS' : 'Email')">
+          Send code by {{ method() === 'Email' ? 'SMS' : 'Email' }}
+        </button>
+      </form>
+    }
+  </mat-card-content>
+</mat-card>

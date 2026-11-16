@@ -1,0 +1,14 @@
+global using ELearningPlatform.Application.Abstractions.Services;
+global using ELearningPlatform.Application.DTOs.Authentication;
+global using ELearningPlatform.Application.DTOs.Media;
+global using ELearningPlatform.Application.DTOs.Notification;
+global using ELearningPlatform.Application.Settings;
+global using ELearningPlatform.Domain.Entities;
+global using ELearningPlatform.Domain.Enums;
+global using ELearningPlatform.Infrastructure.Persistence;
+global using ELearningPlatform.Infrastructure.Services;
+global using ELearningPlatform.Infrastructure.Tests.Support;
+global using ELearningPlatform.Shared.Constants;
+global using Microsoft.Extensions.Logging.Abstractions;
+global using Microsoft.Extensions.Options;
+global using Microsoft.Extensions.Time.Testing;

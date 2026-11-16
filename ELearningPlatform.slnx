@@ -1,0 +1,12 @@
+<Solution>
+  <Project Path="ELearningPlatform.API/ELearningPlatform.API.csproj" />
+  <Project Path="ELearningPlatform.Application/ELearningPlatform.Application.csproj" />
+  <Project Path="ELearningPlatform.Domain/ELearningPlatform.Domain.csproj" />
+  <Project Path="ELearningPlatform.Infrastructure/ELearningPlatform.Infrastructure.csproj" />
+  <Project Path="ELearningPlatform.Shared/ELearningPlatform.Shared.csproj" />
+  <Folder Name="/tests/">
+    <Project Path="tests/ELearningPlatform.API.Tests/ELearningPlatform.API.Tests.csproj" />
+    <Project Path="tests/ELearningPlatform.Application.Tests/ELearningPlatform.Application.Tests.csproj" />
+    <Project Path="tests/ELearningPlatform.Infrastructure.Tests/ELearningPlatform.Infrastructure.Tests.csproj" />
+  </Folder>
+</Solution>
